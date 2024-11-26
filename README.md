@@ -1,66 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Objective: Develop a backend feature in Laravel that allows users to comment on posts, videos, and pictures using a polymorphic relationship.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Requirements:
+# Database Structure:
+Implement a comments table that uses a polymorphic relationship to associate comments with posts, videos, and pictures.
+Include a users table to track which user made the comment.
+# Model Relationships:
+Define the appropriate Eloquent relationships in the models (User, Comment, Post, Video, Picture).
+# Endpoints:
+Create the following RESTful API endpoints:
+POST /comments: Add a comment to a post, video, or picture.
+GET /comments/{type}/{id}: Retrieve all comments for a specific post, video, or picture.
+DELETE /comments/{id}: Delete a specific comment.
+# Validation:
+Ensure only authenticated users can add or delete comments.
+Validate that comments cannot be empty.
+# Testing:
+Write feature tests to validate the functionality of the endpoints.
+Codebase Submission:
+Upload the Laravel project codebase to a public Git repository.
+Submit the repository link on or before Nov. 26, 2024, 11:59 PM.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Exam Tasks:
+# Database Migration:
+Create migrations for users, posts, videos, pictures, and comments.
+# Model Configuration:
+Configure the models and relationships:
+User has many comments.
+Comment belongs to commentable (polymorphic).
+Post, Video, and Picture have many comments.
+API Controller:
+Create a CommentController to handle the API endpoints.
+# Routes:
+Define API routes in api.php.
+# Authentication:
+Implement Laravel's built-in authentication to secure the endpoints.
+# Feature Testing:
+Use Laravel's testing tools to ensure:
+Comments can be added to any type of entity.
+Only authenticated users can interact with comments.
+Validation errors are returned for invalid requests.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Deliverables:
+Codebase: Submit the Laravel project code in a public Git repository.
+Database Schema: Include an SQL dump of your database structure.
+Postman Collection: Provide a collection of API requests for testing.
+Test Coverage Report: Share the output of the PHPUnit tests.
+Submission Deadline: Share the Git repository link on or before Nov. 26, 2024, 11:59 PM.
