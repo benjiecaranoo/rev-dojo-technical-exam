@@ -11,14 +11,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'V1'], function () {
         Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum')->name('auth.logout');
     });
 
-//    Route::group(['namespace' => 'Comment'], function ($router) {
-//        Route::apiResource('comments', \App\Http\Controllers\V1\Comment\CommentController::class);
-//        ->middleware('auth:sanctum')
-//        ->only(['index', 'store', 'update', 'destroy']);
-        Route::group(['middleware' => 'auth:sanctum'], function () {
-            Route::get('comments/{type}/{id}', [CommentController::class, 'index'])->name('comments.index');
-            Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
-            Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
-        });
-//    });
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::get('comments/{type}/{id}', [CommentController::class, 'index'])->name('comments.index');
+        Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
+        Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    });
 });
