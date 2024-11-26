@@ -43,4 +43,9 @@ trait ReturnResponse
 
         return response()->json($payload, $statusCode);
     }
+
+    public function respondWithEmptyData($statusCode = 200): JsonResponse
+    {
+        return response()->json([], $statusCode);
+    }
 }
