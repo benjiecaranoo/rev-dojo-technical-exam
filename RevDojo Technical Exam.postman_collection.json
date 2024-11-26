@@ -1,0 +1,1020 @@
+{
+	"info": {
+		"_postman_id": "45d5ffa1-56dc-4057-857d-e4b146ee5e26",
+		"name": "RevDojo Technical Exam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6552817"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('AUTH_TOKEN', pm.response.json().data.access_token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "gerlach.dejon@example.org",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "422 - Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "john@example.net",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The email field is required.\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    },\n    \"http_status\": 422,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNPROCESSABLE_ENTITY\"\n}"
+						},
+						{
+							"name": "401 - Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "john@example.net",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid credentials\",\n    \"error_code\": \"INVALID_CREDENTIALS\",\n    \"http_status\": 401,\n    \"success\": false\n}"
+						},
+						{
+							"name": "200 - Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "john@example.net",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"access_token\": \"1|9PGFcKpe2VFPfHLAGgvNYlpkOG6JIgSbtWT2HJjZ3dfd27ed\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": \"2024-11-26T07:15:13.590430Z\",\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Renee Walter PhD\",\n            \"email\": \"gerlach.dejon@example.org\",\n            \"email_verified_at\": \"2024-11-26T07:14:08.000000Z\",\n            \"created_at\": \"2024-11-26T07:14:08.000000Z\",\n            \"updated_at\": \"2024-11-26T07:14:08.000000Z\"\n        }\n    },\n    \"http_status\": 200,\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/auth/logout",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401- Logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/auth/logout",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\",\n    \"http_status\": 401,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNAUTHORIZED\"\n}"
+						},
+						{
+							"name": "200 - Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/auth/logout",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully logged out\",\n    \"http_status\": 200,\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Add Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "body",
+									"value": "hello world",
+									"type": "text"
+								},
+								{
+									"key": "commentable_id",
+									"value": "7",
+									"description": "This will be the id of post, video or picture that you will be commenting",
+									"type": "text"
+								},
+								{
+									"key": "commentable_type",
+									"value": "post",
+									"description": "Type [post, video, picture]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}/comments",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401 - Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/auth/comments",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"comments"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\",\n    \"http_status\": 401,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNAUTHORIZED\"\n}"
+						},
+						{
+							"name": "422 - Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/auth/comments",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"comments"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The body field is required.\",\n    \"errors\": {\n        \"body\": [\n            \"The body field is required.\"\n        ],\n        \"commentable_id\": [\n            \"The commentable id field is required.\"\n        ],\n        \"commentable_type\": [\n            \"The commentable type field is required.\"\n        ]\n    },\n    \"http_status\": 422,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNPROCESSABLE_ENTITY\"\n}"
+						},
+						{
+							"name": "500 - Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "body",
+											"value": "hello world",
+											"type": "text"
+										},
+										{
+											"key": "commentable_id",
+											"value": "1",
+											"description": "This will be the id of post, video or picture that you will be commenting",
+											"type": "text"
+										},
+										{
+											"key": "commentable_type",
+											"value": "",
+											"description": "Type [post, video, picture]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/comments",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unsupported post1 type.\",\n    \"http_status\": 500,\n    \"success\": false,\n    \"error_code\": \"HTTP_INTERNAL_SERVER_ERROR\"\n}"
+						},
+						{
+							"name": "422 - Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "body",
+											"value": "hello world",
+											"type": "text"
+										},
+										{
+											"key": "commentable_id",
+											"value": "1",
+											"description": "This will be the id of post, video or picture that you will be commenting",
+											"type": "text"
+										},
+										{
+											"key": "commentable_type",
+											"value": "video",
+											"description": "Type [post, video, picture]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/comments",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The selected commentable type is invalid.\",\n    \"errors\": {\n        \"commentable_type\": [\n            \"The selected commentable type is invalid.\"\n        ]\n    },\n    \"http_status\": 422,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNPROCESSABLE_ENTITY\"\n}"
+						},
+						{
+							"name": "200 - Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "body",
+											"value": "hello world",
+											"type": "text"
+										},
+										{
+											"key": "commentable_id",
+											"value": "1",
+											"description": "This will be the id of post, video or picture that you will be commenting",
+											"type": "text"
+										},
+										{
+											"key": "commentable_type",
+											"value": "video",
+											"description": "Type [post, video, picture]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/comments",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"body\": \"hello world\",\n        \"commentable_id\": 7,\n        \"commentable_type\": \"App\\\\Models\\\\Post\",\n        \"created_at\": \"2024-11-26T10:42:05.000000Z\",\n        \"updated_at\": \"2024-11-26T10:42:05.000000Z\",\n        \"author\": {\n            \"id\": 16,\n            \"name\": \"Prof. Daren Tremblay\",\n            \"email\": \"west.eusebio@example.net\",\n            \"email_verified_at\": \"2024-11-26T10:41:39.000000Z\",\n            \"created_at\": \"2024-11-26T10:41:39.000000Z\"\n        }\n    },\n    \"http_status\": 201,\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/comments/:comment",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comments",
+								":comment"
+							],
+							"variable": [
+								{
+									"key": "comment",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401 - Delete Comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/comments/:comment",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments",
+										":comment"
+									],
+									"variable": [
+										{
+											"key": "comment",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\",\n    \"http_status\": 401,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNAUTHORIZED\"\n}"
+						},
+						{
+							"name": "404 - Delete Comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/comments/:comment",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments",
+										":comment"
+									],
+									"variable": [
+										{
+											"key": "comment",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Comment] 7\",\n    \"http_status\": 404,\n    \"success\": false,\n    \"error_code\": \"HTTP_NOT_FOUND\"\n}"
+						},
+						{
+							"name": "200 - Delete Comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/comments/:comment",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments",
+										":comment"
+									],
+									"variable": [
+										{
+											"key": "comment",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"http_status\": 200,\n    \"success\": true\n}"
+						},
+						{
+							"name": "403 - Delete Comment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/comments/:comment",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments",
+										":comment"
+									],
+									"variable": [
+										{
+											"key": "comment",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized to delete this comment.\",\n    \"http_status\": 403,\n    \"success\": false,\n    \"error_code\": \"HTTP_FORBIDDEN\"\n}"
+						}
+					]
+				},
+				{
+					"name": "All Comments Per Type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/comments/:type/:id?per_page=15",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comments",
+								":type",
+								":id"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "picture",
+									"description": "Type can be `post`, `video`, or `picture`"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Id for specific post, video or picture"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401 - All Comments Per Type",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/comments/:type/:id",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments",
+										":type",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "",
+											"description": "Type can be `post`, `video`, or `picture`"
+										},
+										{
+											"key": "id",
+											"value": "",
+											"description": "Id for specific post, video or picture"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\",\n    \"http_status\": 401,\n    \"success\": false,\n    \"error_code\": \"HTTP_UNAUTHORIZED\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
