@@ -16,7 +16,7 @@ class DestroyTest extends TestCase
     /**
      * @test
      */
-    public function authenticated_user_should_be_able_their_own_comment()
+    public function authenticated_user_should_be_able_delete_their_own_comment()
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
